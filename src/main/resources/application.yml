@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: MsDenemeApplication
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+      discovery:
+        healthCheckPath: /
+        healthCheckInterval: 20s
+        enabled: true
+        instanceId: ${spring.application.name}:${random.value}

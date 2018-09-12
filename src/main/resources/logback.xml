@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <property name="LOG_PATH" value="/logs"></property>
+    <appender name="msdeneme" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/msdeneme/msdeneme.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/msdeneme/msdeneme.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- definition of appender STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="net" level="TRACE">
+        <appender-ref ref="msdeneme"/>
+    </logger>
+    <logger name="org" level="TRACE">
+        <appender-ref ref="msdeneme"/>
+    </logger>
+    <logger name="com" level="TRACE">
+        <appender-ref ref="msdeneme"/>
+    </logger>
+
+    <logger name="net" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.springframework.jdbc" level="TRACE" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+</configuration>
