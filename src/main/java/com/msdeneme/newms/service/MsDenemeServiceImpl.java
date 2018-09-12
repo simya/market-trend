@@ -15,8 +15,6 @@ public class MsDenemeServiceImpl implements MsDenemeService {
 
     @Autowired
     PlatformPropertyService platformPropertyService;
-
-
     @Override
     public ItemStatusResponse getItemStatus(ItemStatusRequest request) {
         ItemStatusResponse response = new ItemStatusResponse();
