@@ -20,13 +20,13 @@ public class AppParamDao implements GenericDao<AppParam> {
     private static final BeanPropertyRowMapper rowMapper = new BeanPropertyRowMapper(AppParam.class);
 
     @Override
-    public Optional<AppParam> findById(long id) {
+    public AppParam findById(long id) {
         return null;
     }
 
     @Override
-    public Optional<List<AppParam>> findAll() {
-        return Optional.ofNullable(jdbcTemplate.query(MsQueries.GET_ALL_PUSH_APP_PARAM,rowMapper));
+    public List<AppParam> findAll() {
+        return jdbcTemplate.query(MsQueries.GET_ALL_PUSH_APP_PARAM,rowMapper);
     }
 
     @Override

@@ -9,9 +9,9 @@ import java.util.Optional;
  */
 public interface GenericDao<T extends Serializable> {
 
-    Optional<T> findById(final long id);
+    T findById(final long id);
 
-    Optional<List<T>> findAll();
+    List<T> findAll();
 
     void insert(final T entity);
 

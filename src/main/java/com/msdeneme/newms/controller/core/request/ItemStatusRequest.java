@@ -5,7 +5,6 @@ public class ItemStatusRequest {
 
     private String equity;
 
-
     public String getEquity() {
         return equity;
     }

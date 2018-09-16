@@ -1,6 +1,7 @@
 package com.msdeneme.newms.core.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -11,7 +12,8 @@ public class Equity implements Serializable {
     private long id;
     private String name;
     private String status;
-    private Date date;
+    private BigDecimal value;
+    private Date created_date;
 
     public long getId() {
         return id;
@@ -37,11 +39,19 @@ public class Equity implements Serializable {
         this.status = status;
     }
 
-    public Date getDate() {
-        return date;
+    public BigDecimal getValue() {
+        return value;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public Date getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        this.created_date = created_date;
     }
 }

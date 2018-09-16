@@ -37,16 +37,19 @@ public class PlatformPropertyServiceImpl implements PlatformPropertyService {
         int updateIntervalTime = Integer.parseInt(updateInterval == null ? Constants.PROPERTY_UPDATE_INTERVAL_TIME : updateInterval);
         if (platformProperties == null || new Date().getTime() - lastPlatformPropertiesUpdateDate.getTime() > updateIntervalTime && platformPropertiesUpdating.compareAndSet(false, true)) {
 
-            Optional<List<AppParam>> appParams = appParamDao.findAll();
+            List<AppParam> appParams = appParamDao.findAll();
+            if ( appParams == null )
+                return null;
 
             Properties properties = new Properties();
-            appParams.ifPresent(x -> x.forEach(appParam -> {
+            for ( AppParam appParam  : appParams ) {
                 if (!MsUtil.isNullOrEmptyString(appParam.getName()) && !MsUtil.isNullOrEmptyString(appParam.getValue())) {
                     properties.put(appParam.getName(), appParam.getValue());
-                } else {
+                }
+                else {
                     logger.info("this application parameter is null");
                 }
-            }));
+            };
 
             platformProperties = properties;
             lastPlatformPropertiesUpdateDate = new Date();

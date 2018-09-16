@@ -21,12 +21,12 @@ public class MsServiceLogDao implements GenericDao<MsServiceLog> {
     public static final BeanPropertyRowMapper rowMapper = new BeanPropertyRowMapper(MsServiceLog.class);
 
     @Override
-    public Optional<MsServiceLog> findById(long id) {
+    public MsServiceLog findById(long id) {
         return null;
     }
 
     @Override
-    public Optional<List<MsServiceLog>> findAll() {
+    public List<MsServiceLog> findAll() {
         return null;
     }
 

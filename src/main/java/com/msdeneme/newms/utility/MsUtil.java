@@ -127,11 +127,19 @@ public class MsUtil {
         return hostIp;
     }
 
-    public static <T> Optional<T> findFirst(List<T> list) {
-        Optional<List<T>> optionalList = Optional.ofNullable(list);
-        if (optionalList.isPresent()) {
-            return optionalList.get().stream().findFirst();
-        }
-        return Optional.empty();
+    public static int getSignValue(){
+        LocalDateTime now = LocalDateTime.now();
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int day = now.getDayOfMonth();
+        int hour = now.getHour();
+        int minute = now.getMinute();
+
+        int value = year + month + day + hour + minute;
+
+        return value;
     }
+
 }
+
+
