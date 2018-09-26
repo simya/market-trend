@@ -49,6 +49,7 @@ public class EquityDao  implements GenericDao<Equity> {
 
     @Override
     public List<Equity> findAll() {
+
         return null;
     }
 

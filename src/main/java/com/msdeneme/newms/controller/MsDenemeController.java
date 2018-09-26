@@ -1,8 +1,10 @@
 package com.msdeneme.newms.controller;
 
+import com.msdeneme.newms.controller.core.BaseRestRequest;
 import com.msdeneme.newms.controller.core.BaseRestResponse;
 import com.msdeneme.newms.controller.core.request.ItemStatusRequest;
 import com.msdeneme.newms.controller.core.request.ItemUpdateRequest;
+import com.msdeneme.newms.controller.core.response.ItemListResponse;
 import com.msdeneme.newms.controller.core.response.ItemStatusResponse;
 import com.msdeneme.newms.service.MsDenemeService;
 import com.msdeneme.newms.service.PlatformPropertyService;
@@ -26,6 +28,16 @@ public class MsDenemeController {
 
     @Autowired
     PlatformPropertyService platformPropertyService;
+
+
+    @RequestMapping(value = {"/getItemList.do"},method = RequestMethod.POST)
+    public @ResponseBody
+    ItemListResponse getItemList(@RequestBody BaseRestRequest request) {
+        logger.info("post request for getItemList.do");
+
+        return msDenemeService.getItemList(request);
+    }
+
 
     @RequestMapping(value = {"/getItemStatus.do"},method = RequestMethod.POST)
     public @ResponseBody
